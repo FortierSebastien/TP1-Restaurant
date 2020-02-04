@@ -1,20 +1,24 @@
 
 public class cv {
+	String tab[] = {"Programmation","Analyse"};
 	
 	public static String MESS_BIENVENUE ="Bienvenue chez la viande battue";
 	
 	
-
+	public static String nom;
 	public static String prenom;
 	public static String formation;
 	public static int experienceTravailAnnee;
 	public static String[] competences;
 	public static String attente;
 	
-	public static void affiche() {
-		System.out.println( "Nom: "+nom+"\n" +"\nPrénom: "+ prenom+"\n" + "\nFormation: "+formation+"\n" 
-	+ "\nAnnées d'experiences: " +experienceTravailAnnee+"\n" + "\nCompétences: "+transformTabToString( competences )
-	+"\n\nAttentes: "+ attente);
+
+	public static void affiche(cv unObjet) {
+		System.out.println( "Nom: "+unObjet.getNom()+"\n" +"\nPrénom: "+ unObjet.getPrenom()+"\n" + "\nFormation: "
+	+unObjet.getFormation()+"\n" + "\nAnnées d'experiences: " +unObjet.getExperienceTravailAnnee()+"\n" 
+				+ "\nCompétences: "
+		+transformTabToString( unObjet.getCompetences() )+"\n\nAttentes: "+ unObjet.getAttente());
+		
 	}
 	public static String transformTabToString(String[] tab ) {
 		String texte="";
@@ -24,93 +28,107 @@ public class cv {
 		return texte;
 	}
 	
-	public static void main() {
+
+
+	
+	
+	
+	public void main() {
 		System.out.println( MESS_BIENVENUE );
+		cv sebastien = new cv();
+		sebastien.setNom( "Fortier" );
+		sebastien.setPrenom( "Sébastien" );
+		sebastien.setFormation( "Technique en programation" );
+		sebastien.setExperienceTravailAnnee( 2 );
+		sebastien.setCompetences( tab );
+		sebastien.setAttente( "None" );
+		
+		cv anthony = new cv();
+		anthony.setNom( "Bassal" );
+		anthony.setPrenom( "Anthony" );
+		anthony.setFormation( "Technique en programation" );
+		anthony.setExperienceTravailAnnee( 2 );
+		anthony.setCompetences( tab );
+		anthony.setAttente( "None" );
+		
+		affiche( sebastien );
+		affiche( anthony );
+		
 	}
-	public static String nom;
-	/**
-	 * @return the mESS_BIENVENUE
-	 */
-	public static String getMESS_BIENVENUE() {
-		return MESS_BIENVENUE;
-	}
-	/**
-	 * @param mESS_BIENVENUE the mESS_BIENVENUE to set
-	 */
-	public static void setMESS_BIENVENUE( String mESS_BIENVENUE ) {
-		MESS_BIENVENUE = mESS_BIENVENUE;
-	}
+	
 	/**
 	 * @return the nom
 	 */
-	public static String getNom() {
+	public String getNom() {
 		return nom;
 	}
 	/**
 	 * @param nom the nom to set
 	 */
-	public static void setNom( String nom ) {
+	public void setNom( String nom ) {
 		cv.nom = nom;
 	}
 	/**
 	 * @return the prenom
 	 */
-	public static String getPrenom() {
+	public String getPrenom() {
 		return prenom;
 	}
 	/**
 	 * @param prenom the prenom to set
 	 */
-	public static void setPrenom( String prenom ) {
+	public void setPrenom( String prenom ) {
 		cv.prenom = prenom;
 	}
 	/**
 	 * @return the formation
 	 */
-	public static String getFormation() {
+	public String getFormation() {
 		return formation;
 	}
 	/**
 	 * @param formation the formation to set
 	 */
-	public static void setFormation( String formation ) {
+	public void setFormation( String formation ) {
 		cv.formation = formation;
 	}
 	/**
 	 * @return the experienceTravailAnnee
 	 */
-	public static int getExperienceTravailAnnee() {
+	public int getExperienceTravailAnnee() {
 		return experienceTravailAnnee;
 	}
 	/**
 	 * @param experienceTravailAnnee the experienceTravailAnnee to set
 	 */
-	public static void setExperienceTravailAnnee( int experienceTravailAnnee ) {
+	public void setExperienceTravailAnnee( int experienceTravailAnnee ) {
 		cv.experienceTravailAnnee = experienceTravailAnnee;
 	}
 	/**
 	 * @return the competences
 	 */
-	public static String[] getCompetences() {
+	public String[] getCompetences() {
 		return competences;
 	}
 	/**
 	 * @param competences the competences to set
 	 */
-	public static void setCompetences( String[] competences ) {
+	public void setCompetences( String[] competences ) {
 		cv.competences = competences;
 	}
 	/**
 	 * @return the attente
 	 */
-	public static String getAttente() {
+	public String getAttente() {
 		return attente;
 	}
 	/**
 	 * @param attente the attente to set
 	 */
-	public static void setAttente( String attente ) {
+	public void setAttente( String attente ) {
 		cv.attente = attente;
 	}
+	
+
 	
 }
