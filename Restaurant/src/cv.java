@@ -1,8 +1,9 @@
 
 public class cv {
-	String tab[] = {"Programmation","Analyse"};
 	
-	public static String MESS_BIENVENUE ="Bienvenue chez la viande battue";
+	static String tab[] = {"Programmation","Analyse"};
+	
+	public static String MESS_BIENVENUE ="\nBienvenue chez la viande battue";
 	
 	
 	public static String nom;
@@ -14,7 +15,7 @@ public class cv {
 	
 
 	public static void affiche(cv unObjet) {
-		System.out.println( "Nom: "+unObjet.getNom()+"\n" +"\nPrénom: "+ unObjet.getPrenom()+"\n" + "\nFormation: "
+		System.out.println( "\n\nNom: "+unObjet.getNom()+"\n" +"\nPrénom: "+ unObjet.getPrenom()+"\n" + "\nFormation: "
 	+unObjet.getFormation()+"\n" + "\nAnnées d'experiences: " +unObjet.getExperienceTravailAnnee()+"\n" 
 				+ "\nCompétences: "
 		+transformTabToString( unObjet.getCompetences() )+"\n\nAttentes: "+ unObjet.getAttente());
@@ -33,7 +34,7 @@ public class cv {
 	
 	
 	
-	public void main() {
+	public static void afficherAuteur() {
 		System.out.println( MESS_BIENVENUE );
 		cv sebastien = new cv();
 		sebastien.setNom( "Fortier" );
@@ -43,6 +44,8 @@ public class cv {
 		sebastien.setCompetences( tab );
 		sebastien.setAttente( "None" );
 		
+		affiche( sebastien );
+		
 		cv anthony = new cv();
 		anthony.setNom( "Bassal" );
 		anthony.setPrenom( "Anthony" );
@@ -51,8 +54,21 @@ public class cv {
 		anthony.setCompetences( tab );
 		anthony.setAttente( "None" );
 		
-		affiche( sebastien );
 		affiche( anthony );
+		
+	}
+	public static cv setInfo(String nom, String prenom, String formation,int experienceInt,String []competence,String attente ) {
+		
+		cv temp = new cv();
+		temp.setNom( nom );
+		temp.setPrenom( prenom);
+		temp.setFormation( formation );
+		temp.setExperienceTravailAnnee( experienceInt );
+		temp.setCompetences( competence );
+		temp.setAttente( attente );
+		
+		return temp;
+		
 		
 	}
 	
