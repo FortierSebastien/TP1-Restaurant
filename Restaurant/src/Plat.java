@@ -8,6 +8,9 @@ public class Plat {
 		setPrixPlat(prixPlat);
 		setTitrePlat(titrePlat);
 	}
+	public Plat(String titrePlat) {
+		setTitrePlat(titrePlat);
+	}
 
 	public String getTitrePlat() {
 		return titrePlat;

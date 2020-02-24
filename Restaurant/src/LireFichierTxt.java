@@ -17,7 +17,7 @@ public class LireFichierTxt {
 	static ObjectInputStream ficLecture;
 	static String nomFichier;
 	static String texte;
-	public static ArrayList<Plat> listePlats = new ArrayList<Plat>(5);
+	public static ArrayList<Plat> listePlats = new ArrayList<Plat>();
 	public static int nombrePlats = 0;
 	
 	BufferedReader fic = new BufferedReader( new InputStreamReader( System.in ) );
@@ -25,36 +25,48 @@ public class LireFichierTxt {
 	
 	public static void lireFichierResto() throws FileNotFoundException, IOException {
 		final String QUEST_NOM_FICHIER = "\nEntrez le nom du fichier qui contient les infos "
-				+ "du restaurant: ";
+					+ "du restaurant: ";
+			
+			nomFichier = OutilsFichier.lireNomFichier( QUEST_NOM_FICHIER );
+			
+		BufferedReader reader= OutilsFichier.ouvrirFicTexteLecture( nomFichier );
+		String fichier = reader.readLine();
+		int indexClients = 0;
+		int indexPlats = fichier.indexOf( ENTETE_PLAT );
+		int indexCommandes = fichier.indexOf( ENTETE_COMMANDE );
 		
-		nomFichier = OutilsFichier.lireNomFichier( QUEST_NOM_FICHIER );
+		String clients = fichier.substring( indexClients,  indexPlats).trim();
+		String[] listeClients = clients.split(" ");
+		clients = clients.substring(clients.indexOf(listeClients[2]));
+		listeClients = clients.split(" ");
 		
-	BufferedReader reader= OutilsFichier.ouvrirFicTexteLecture( nomFichier );
-	String fichier = reader.readLine();
-	int indexClients = 0;
-	int indexPlats = fichier.indexOf( ENTETE_PLAT );
-	int indexCommandes = fichier.indexOf( ENTETE_COMMANDE );
-	
-	String clients = fichier.substring( indexClients,  indexPlats).trim();
-	System.out.println(  clients);
-	
-	String plats = fichier.substring( indexPlats,  indexCommandes).trim();
-	
-	creerListePlats(plats);
-	
-	
-//	System.out.println(  plats);
-	
-	String commandes = fichier.substring(indexCommandes).trim();
-	String[] facture = commandes.split(" ");
-	for (int i = 3; i < facture.length; i+= 2) {
-		System.out.println(facture[i - 1] + " : " + calculerPrixFacture(facture) );
+		
+		String plats = fichier.substring( indexPlats,  indexCommandes).trim();
+		
+		creerListePlats(plats);
+		
+		
+		String commandes = fichier.substring(indexCommandes).trim();
+		
+		commandes = commandes.substring(commandes.indexOf(listeClients[0]), commandes.indexOf(" Fin"));
+		String[] facture = commandes.split(" ");
+		System.out.println("\nBienvenue au restaurant Simon & co.");
+		System.out.println("Factures : ");
+		
+		for (int i = 0; i < facture.length; i ++) {
+			for (int j = 0; j < listeClients.length; j++) {
+				if(listeClients[j].equals(facture[i])) {
+					for (int j2 = 0; j2 < listePlats.size(); j2++) {
+						if(facture[i + 1].equals(listePlats.get(j2).getTitrePlat())){
+							calculerPrixFacture(facture[i],listePlats.get(j2).getPrixPlat(), facture[i + 2]);
+						}
+					}
+				}	
+			}
+		}
+		
+		
 	}
-	
-	System.out.println(  commandes);
-	
-	
-		  }
 	public static String transformTabToString(String[] tab) {
 		String texte="";
 		for (int i = 0; i<tab.length;i++) {
@@ -65,7 +77,7 @@ public class LireFichierTxt {
 		
 	}
 	public static void creerListePlats(String listeDesPlats) {
-		
+		listePlats.clear();
 		String[] tabPlats;
 		
 		tabPlats = listeDesPlats.split(" ");
@@ -77,12 +89,14 @@ public class LireFichierTxt {
 			listePlats.add(plat);
 		}
 	}
-	public static String calculerPrixFacture(String[] tabRepas) {
+	public static void calculerPrixFacture(String nom, String prix, String nombre) {
+		
+		
+			System.out.println(nom + " : " + Double.parseDouble(prix) * Integer.parseInt(nombre) );
+			
 		
 		
 		
-		
-		return null;
 	}
 	
 	

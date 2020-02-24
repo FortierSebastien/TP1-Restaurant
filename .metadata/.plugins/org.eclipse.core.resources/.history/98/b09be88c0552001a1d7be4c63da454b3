@@ -1,0 +1,16 @@
+
+public class Plat {
+	
+	public String listePlats;
+	
+	
+	public Plat(String listePlats) {
+		
+		String[] tabPlats;
+		
+		tabPlats = listePlats.split(" ");
+		
+		
+	}
+	
+}

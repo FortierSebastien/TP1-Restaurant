@@ -1,0 +1,15 @@
+
+public class Client {
+	public static String nom;
+	public static double prix;
+	
+	public Client(String nom, String commande) {
+		
+		
+		
+	
+			
+	}
+	
+}
+

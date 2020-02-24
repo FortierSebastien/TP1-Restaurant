@@ -5,13 +5,13 @@ import java.io.IOException;
 
 import outilsjava.*;
 
-public class principal {
+public class Principal {
 	private static final String MESS_FIN_PROG = "\nMerci d'avoir utilisé le programme du restaurant !";
 
 	// Constantes pour les choix du menu principal.
 
 	
-	public principal() throws FileNotFoundException, IOException {
+	public Principal() throws FileNotFoundException, IOException {
 	final char IMPORT_TXT = '1';
 	final char AFFICHER_AUTEUR = '2';
 	final char QUITTER_PROGRAMME = '3';
@@ -49,7 +49,7 @@ public class principal {
 				break;
 
 			case AFFICHER_AUTEUR:
-				cv.afficherAuteur();
+				Cv.afficherAuteur();
 				break;
 
 			

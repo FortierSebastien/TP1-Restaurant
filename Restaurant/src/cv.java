@@ -1,5 +1,5 @@
 
-public class cv {
+public class Cv {
 	
 	static String tab[] = {"Programmation","Analyse"};
 	
@@ -14,7 +14,7 @@ public class cv {
 	public static String attente;
 	
 
-	public static void affiche(cv unObjet) {
+	public static void affiche(Cv unObjet) {
 		System.out.println( "\n\nNom: "+unObjet.getNom()+"\n" +"\nPrénom: "+ unObjet.getPrenom()+"\n" + "\nFormation: "
 	+unObjet.getFormation()+"\n" + "\nAnnées d'experiences: " +unObjet.getExperienceTravailAnnee()+"\n" 
 				+ "\nCompétences: "
@@ -36,7 +36,7 @@ public class cv {
 	
 	public static void afficherAuteur() {
 		System.out.println( MESS_BIENVENUE );
-		cv sebastien = new cv();
+		Cv sebastien = new Cv();
 		sebastien.setNom( "Fortier" );
 		sebastien.setPrenom( "Sébastien" );
 		sebastien.setFormation( "Technique en programation" );
@@ -46,7 +46,7 @@ public class cv {
 		
 		affiche( sebastien );
 		
-		cv anthony = new cv();
+		Cv anthony = new Cv();
 		anthony.setNom( "Bassal" );
 		anthony.setPrenom( "Anthony" );
 		anthony.setFormation( "Technique en programation" );
@@ -57,9 +57,9 @@ public class cv {
 		affiche( anthony );
 		
 	}
-	public static cv setInfo(String nom, String prenom, String formation,int experienceInt,String []competence,String attente ) {
+	public static Cv setInfo(String nom, String prenom, String formation,int experienceInt,String []competence,String attente ) {
 		
-		cv temp = new cv();
+		Cv temp = new Cv();
 		temp.setNom( nom );
 		temp.setPrenom( prenom);
 		temp.setFormation( formation );
@@ -82,7 +82,7 @@ public class cv {
 	 * @param nom the nom to set
 	 */
 	public void setNom( String nom ) {
-		cv.nom = nom;
+		Cv.nom = nom;
 	}
 	/**
 	 * @return the prenom
@@ -94,7 +94,7 @@ public class cv {
 	 * @param prenom the prenom to set
 	 */
 	public void setPrenom( String prenom ) {
-		cv.prenom = prenom;
+		Cv.prenom = prenom;
 	}
 	/**
 	 * @return the formation
@@ -106,7 +106,7 @@ public class cv {
 	 * @param formation the formation to set
 	 */
 	public void setFormation( String formation ) {
-		cv.formation = formation;
+		Cv.formation = formation;
 	}
 	/**
 	 * @return the experienceTravailAnnee
@@ -118,7 +118,7 @@ public class cv {
 	 * @param experienceTravailAnnee the experienceTravailAnnee to set
 	 */
 	public void setExperienceTravailAnnee( int experienceTravailAnnee ) {
-		cv.experienceTravailAnnee = experienceTravailAnnee;
+		Cv.experienceTravailAnnee = experienceTravailAnnee;
 	}
 	/**
 	 * @return the competences
@@ -130,7 +130,7 @@ public class cv {
 	 * @param competences the competences to set
 	 */
 	public void setCompetences( String[] competences ) {
-		cv.competences = competences;
+		Cv.competences = competences;
 	}
 	/**
 	 * @return the attente
@@ -142,7 +142,7 @@ public class cv {
 	 * @param attente the attente to set
 	 */
 	public void setAttente( String attente ) {
-		cv.attente = attente;
+		Cv.attente = attente;
 	}
 	
 

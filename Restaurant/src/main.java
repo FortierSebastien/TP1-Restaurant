@@ -1,8 +1,7 @@
 import java.io.*;
-import java.nio.file.*;
 
-import outilsjava.*;
-public class main {
+
+public class Main {
 	public static void main( String[] args ) throws FileNotFoundException, IOException {
 	/*	boolean peutContinuer = true;
 
@@ -52,7 +51,7 @@ public class main {
 			 * Une instance de la classe PrincipalTp7 permet de gérer l'affectation des joueurs à des avatars.
 			 */
 
-			new principal();
+			new Principal();
 
 		//} else {
 			//System.out.println( "\nImpossible de tester le programme." );

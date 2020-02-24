@@ -1,0 +1,13 @@
+
+public class Plat {
+	
+	public String titrePlat;
+	public String prixPlat;
+	
+	public Plat(String listePlats) {
+		
+		
+	}
+
+	
+}
