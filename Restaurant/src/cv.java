@@ -47,8 +47,8 @@ public class Cv {
 		affiche( sebastien );
 		
 		Cv anthony = new Cv();
-		anthony.setNom( "Bassal" );
-		anthony.setPrenom( "Anthony" );
+		anthony.setNom( "Manouk" );
+		anthony.setPrenom( "Simon" );
 		anthony.setFormation( "Technique en programation" );
 		anthony.setExperienceTravailAnnee( 2 );
 		anthony.setCompetences( tab );

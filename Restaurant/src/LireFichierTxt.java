@@ -17,6 +17,7 @@ public class LireFichierTxt {
 	static ObjectInputStream ficLecture;
 	static String nomFichier;
 	static String texte;
+	public static ArrayList<Client> listeClient = new ArrayList<Client>();
 	public static ArrayList<Plat> listePlats = new ArrayList<Plat>();
 	public static int nombrePlats = 0;
 	
@@ -39,7 +40,10 @@ public class LireFichierTxt {
 		String[] listeClients = clients.split(" ");
 		clients = clients.substring(clients.indexOf(listeClients[2]));
 		listeClients = clients.split(" ");
-		
+		for (int i = 0; i < listeClients.length; i++) {
+			Client client = new Client(listeClients[i]);
+			listeClient.add(client);
+		}
 		
 		String plats = fichier.substring( indexPlats,  indexCommandes).trim();
 		
@@ -47,24 +51,21 @@ public class LireFichierTxt {
 		
 		
 		String commandes = fichier.substring(indexCommandes).trim();
+		commandes = commandes.substring(commandes.indexOf(": ") + 2, commandes.indexOf(" Fin"));
 		
-		commandes = commandes.substring(commandes.indexOf(listeClients[0]), commandes.indexOf(" Fin"));
+		
 		String[] facture = commandes.split(" ");
-		System.out.println("\nBienvenue au restaurant Simon & co.");
-		System.out.println("Factures : ");
 		
-		for (int i = 0; i < facture.length; i ++) {
-			for (int j = 0; j < listeClients.length; j++) {
-				if(listeClients[j].equals(facture[i])) {
-					for (int j2 = 0; j2 < listePlats.size(); j2++) {
-						if(facture[i + 1].equals(listePlats.get(j2).getTitrePlat())){
-							calculerPrixFacture(facture[i],listePlats.get(j2).getPrixPlat(), facture[i + 2]);
-						}
-					}
-				}	
+		for (int i = 0; i < facture.length; i+=3) {
+			for (int j = 0; j < listeClient.size(); j++) {
+				if(listeClient.get(j).getNom().equals(facture[i])) {
+					String commande = facture[i + 1] + " " + facture[i + 2];
+					listeClient.get(j).setCommande(commande.split(" "));
+				}
 			}
 		}
 		
+		calculerPrixFacture();
 		
 	}
 	public static String transformTabToString(String[] tab) {
@@ -89,10 +90,33 @@ public class LireFichierTxt {
 			listePlats.add(plat);
 		}
 	}
-	public static void calculerPrixFacture(String nom, String prix, String nombre) {
+	public static void calculerPrixFacture() {
 		
+		System.out.println("\nBienvenue au restaurant Simon & co.");
+		System.out.println("Factures : ");
 		
-			System.out.println(nom + " : " + Double.parseDouble(prix) * Integer.parseInt(nombre) );
+		double montant = 0.00;
+		for (int i = 0; i < listeClient.size(); i++) {
+			montant = 0;
+			String[][] commandeClientliste = listeClient.get(i).getCommande();
+			for (int j = 0; j < commandeClientliste.length; j++) {
+				if (commandeClientliste[j][0] != null) {
+					for (int j2 = 0; j2 < listePlats.size(); j2++) {
+						if (commandeClientliste[j][0].equals(listePlats.get(j2).getTitrePlat())) {
+
+							montant += Double.parseDouble(listePlats.get(j2).getPrixPlat())
+									* Integer.parseInt(commandeClientliste[j][1]);
+							break;
+						}
+					}
+				} else {
+					System.out.println("\n" + listeClient.get(i).getNom() + " " + outilsjava.OutilsAffichage.formaterMonetaire(montant, 2));
+					break;
+				}
+			}
+			
+			
+		}
 			
 		
 		
