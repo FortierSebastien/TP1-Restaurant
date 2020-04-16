@@ -1,4 +1,9 @@
 codemix.cleanup.bindings=true
+codemix.day1.message.displayed.time=1582560254826
+codemix.day2.message.displayed=true
+codemix.fixed.editors=true
+codemix.livechat.feedback=1586534619281
+codemix.livechat.feedback.displayed=true
 codemix.showed.view=true
 codemix.showed.welcome=true
 eclipse.preferences.version=1
