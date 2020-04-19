@@ -20,6 +20,8 @@ public class LireFichierTxt {
 	public static ArrayList<Client> listeClient = new ArrayList<Client>();
 	public static ArrayList<Plat> listePlats = new ArrayList<Plat>();
 	public static int nombrePlats = 0;
+	public static final double TPS = 0.05;
+	public static final double TVQ = 0.09975;
 	
 	BufferedReader fic = new BufferedReader( new InputStreamReader( System.in ) );
 	
@@ -59,16 +61,14 @@ public class LireFichierTxt {
 		for (int i = 0; i < facture.length; i+=3) {
 			for (int j = 0; j < listeClient.size(); j++) {
 				if(listeClient.get(j).getNom().equals(facture[i])) {
-					for (int j2 = 0; j2 < facture.length; j2++) {
-						if(facture[i + 1] == listePlats.get(j2).getTitrePlat()) {
 							commande = facture[i + 1] + " " + facture[i + 2];
+							listeClient.get(j).setCommande(commande.split(" "));
 						}
+						
 					}
 					
-					listeClient.get(j).setCommande(commande.split(" "));
+					
 				}
-			}
-		}
 		
 		calculerPrixFacture();
 		
@@ -116,7 +116,11 @@ public class LireFichierTxt {
 					}
 				} else {
 					if(montant != 0) {
-						System.out.println("\n" + listeClient.get(i).getNom() + " " + outilsjava.OutilsAffichage.formaterMonetaire(montant, 2));
+						
+						System.out.println("\nClient : " + listeClient.get(i).getNom() + "\n\tSous-total: "
+							   + outilsjava.OutilsAffichage.formaterMonetaire(montant, 2) + "\n\tTaxes: "
+										   + outilsjava.OutilsAffichage.formaterMonetaire((montant * (TPS + TVQ)), 2) + "\n\tTotal: " 
+										   + outilsjava.OutilsAffichage.formaterMonetaire(montant *= (TPS + TVQ + 1), 2));
 					}
 					break;
 					
