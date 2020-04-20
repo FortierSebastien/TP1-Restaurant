@@ -112,6 +112,11 @@ public class LireFichierTxt {
 							montant += Double.parseDouble(listePlats.get(j2).getPrixPlat())
 									* Integer.parseInt(commandeClientliste[j][1]);
 							break;
+						} else {
+							if(j2 == listePlats.size() - 1 ) {
+								System.out.println("\nLe plat n'existe pas dans le menu");
+								OutilsLecture.lireEntree("\nAppuyez sur entrée pour poursuivre vers la facture");
+							}
 						}
 					}
 				} else {
