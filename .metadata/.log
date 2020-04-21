@@ -229,3 +229,6 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY com.genuitec.eclipse.code.core 1 0 2020-04-21 16:21:42.745
 !MESSAGE CodeMix Engine engine has been started
+
+!ENTRY org.eclipse.jdt.debug 2 0 2020-04-21 17:42:55.166
+!MESSAGE Unable to find location of java.lang.Thread.setName() in debuggee JVM, for type java.lang.Thread

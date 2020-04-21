@@ -75,8 +75,14 @@ public class LireFichierTxt {
 				if (listeClient.get(j).getNom().equals(facture[i])) {
 					commande = facture[i + 1] + " " + facture[i + 2];
 					listeClient.get(j).setCommande(commande.split(" "));
+					break;
 				} else {
-					client = true;
+					
+					if(j == listeClient.size() - 1) {
+						client = true;
+						System.out.println("Le client n'est pas enregistré");
+					}
+					
 				}
 
 			}
@@ -110,54 +116,52 @@ public class LireFichierTxt {
 			}
 		}
 	}
+	public static double montantCalculer(String[][] commandeClientliste, int j ) {
+		double montant = 0;
+		for (int j2 = 0; j2 < listePlats.size(); j2++) {
+			if (commandeClientliste[j][0].equals(listePlats.get(j2).getTitrePlat())) {
+
+				montant += Double.parseDouble(listePlats.get(j2).getPrixPlat())
+						* Integer.parseInt(commandeClientliste[j][1]);
+				break;
+			} else {
+				if (j2 == listePlats.size() - 1) {
+					System.out.println(
+							"\nLe plat: " + commandeClientliste[j][0] + " n'existe pas dans le menu");
+					OutilsLecture.lireEntree("\nAppuyez sur entrée pour poursuivre vers la facture");
+				}
+			}
+		}
+		return montant;
+	}
+
 	public static void calculerPrixFacture() {
 		LireFichierTxt.ecrireFichier();
 		System.out.println("\nBienvenue au restaurant Simon & co.");
 		System.out.println("Factures : ");
-		if(espacement) {
-		}else {
-		double montant = 0.00;
-		for (int i = 0; i < listeClient.size(); i++) {
-			montant = 0;
-			String[][] commandeClientliste = listeClient.get(i).getCommande();
-			for (int j = 0; j < commandeClientliste.length; j++) {
-				if (commandeClientliste[j][0] != null) {
-					for (int j2 = 0; j2 < listePlats.size(); j2++) {
-						if (commandeClientliste[j][0].equals(listePlats.get(j2).getTitrePlat())) {
+		if (espacement) {
+		} else {
+			double montant = 0.00;
+			for (int i = 0; i < listeClient.size(); i++) {
+				montant = 0;
+				String[][] commandeClientliste = listeClient.get(i).getCommande();
+				for (int j = 0; j < commandeClientliste.length; j++) {
+					if (commandeClientliste[j][0] != null) {
+						montant = montantCalculer(commandeClientliste, j);
+					} else {
 
-							montant += Double.parseDouble(listePlats.get(j2).getPrixPlat())
-									* Integer.parseInt(commandeClientliste[j][1]);
-							break;
-						} else {
-							if(j2 == listePlats.size() - 1 ) {
-								System.out.println("\nLe plat: "+ commandeClientliste[j][0] +" n'existe pas dans le menu");
-								OutilsLecture.lireEntree("\nAppuyez sur entrée pour poursuivre vers la facture");
-							}
-						}
-					}
-				} else {
-					if(montant != 0) {
-						
 						System.out.println("\nClient : " + listeClient.get(i).getNom() + "\n\tSous-total: "
-							   + outilsjava.OutilsAffichage.formaterMonetaire(montant, 2) + "\n\tTaxes: "
-										   + outilsjava.OutilsAffichage.formaterMonetaire((montant * (TPS + TVQ)), 2) + "\n\tTotal: " 
-										   + outilsjava.OutilsAffichage.formaterMonetaire(montant *= (TPS + TVQ + 1), 2));
+								+ outilsjava.OutilsAffichage.formaterMonetaire(montant, 2) + "\n\tTaxes: "
+								+ outilsjava.OutilsAffichage.formaterMonetaire((montant * (TPS + TVQ)), 2)
+								+ "\n\tTotal: "
+								+ outilsjava.OutilsAffichage.formaterMonetaire(montant *= (TPS + TVQ + 1), 2));
+
+						break;
+
 					}
-					break;
-					
 				}
 			}
-			
-			
-		}
-		}
-		
-			
-		
-		
-		
-	
-	
+		}	
 	}
 	
 	public static void ecrireFichier(){
