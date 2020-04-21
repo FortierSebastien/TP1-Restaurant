@@ -1,0 +1,45 @@
+Mes fonctionnalités à implémenter sont:
+
+
+l- peut y avoir des commandes incorrectes. Une commande est incorrecte si : 
+o Le nom du client ou le plat n’existe pas (vu précédemment).  
+o Des chiffres sont erronés (quantité de plats commandés). 
+
+• Si un client a une facture de 0$, sa facture n’est pas affichée dans le fichier de sortie.
+
+• Les taxes sont maintenant appliquées (à raison de TPS 5% et TVQ 9,975%). 
+
+• Le calcul de la facture doit se faire par client. 
+
+
+	* Je dois rajouter des execptions pour éviter d'avoir des commandes incorrectes.
+
+	* Je dois ajouter une condition pour les clients qui n'ont aucune commande ou une commande de 0$.
+
+	* Je dois ajouter les deux constantes des taxes, TPS = 0.05 et TVQ = 0.09975 puis les rajouter au montant de la facture.
+
+	* Je crée une meilleure facture par client.
+
+
+Posez des questions à votre client pour clarifier les situations ambiguës:
+
+	* Quelles sont les types d'erreurs possible?
+
+	* Existe t-il des articles gratuit dans le menu?
+
+	* Est ce que la TVQ est calculée sur le sous-total ou le sous-total + la TVQ?
+
+	* La facture doit-elle être divisée pour chaque montant différent sois Sous-total, taxes et Total?
+
+Test à faire:
+
+	Tester une grosse commande
+		Je vais tester le fait qu'un client achète plus d'un article dans sa commande.
+	
+
+
+
+
+
+
+

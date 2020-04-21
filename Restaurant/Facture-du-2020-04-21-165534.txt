@@ -1,0 +1,27 @@
+
+Bienvenue au restaurant Simon & co.
+Factures : 
+
+Client : Chloe
+	Sous-total: 2,00 $
+	Taxes: 0,30 $
+	Total: 2,30 $
+
+Client : Roger
+	Sous-total: 15,00 $
+	Taxes: 2,25 $
+	Total: 17,25 $
+
+Client : Céline
+	Sous-total: 5,00 $
+	Taxes: 0,75 $
+	Total: 5,75 $
+
+Client : Steeve
+	Sous-total: 15,75 $
+	Taxes: 2,36 $
+	Total: 18,11 $
+
+Erreur : 
+
+*	Il y a un ou plusieurs clients qui n'existe pas.
