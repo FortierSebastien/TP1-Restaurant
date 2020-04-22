@@ -18,7 +18,7 @@ public class LireFichierTxt {
 	static boolean espacement = false;
 	static boolean plats = false;
 	static boolean client = false;
-
+	public static BufferedReader READER;
 	static ObjectInputStream ficLecture;
 	static String nomFichier;
 	static String texte;
@@ -37,14 +37,21 @@ public class LireFichierTxt {
 	public static void lireFichierResto() throws FileNotFoundException, IOException {
 		final String QUEST_NOM_FICHIER = "\nEntrez le nom du fichier qui contient les infos " + "du restaurant: ";
 
-		nomFichier = OutilsFichier.lireNomFichier(QUEST_NOM_FICHIER);
+		for (int i = 0; i < 10000; i++) {
+			nomFichier = OutilsFichier.lireNomFichier(QUEST_NOM_FICHIER);
 
-		BufferedReader reader = OutilsFichier.ouvrirFicTexteLecture(nomFichier);
-		String fichier = reader.readLine();
+			READER = OutilsFichier.ouvrirFicTexteLecture(nomFichier);
+			if (READER == null) {
+
+			} else {
+				break;
+			}
+		}
+		String fichier = READER.readLine();
 		if (fichier.contains(DEUX_ESPACES)) {
 			espacement = true;
 		} else {
-			
+
 		}
 		int indexClients = 0;
 		int indexPlats = fichier.indexOf(ENTETE_PLAT);
@@ -201,7 +208,7 @@ public class LireFichierTxt {
 	            writer.write("Factures : ");
 	    		if(espacement){
 	    			System.out.println("\nIl y a un problème d'espacement à corriger dans le ficher texte utilisé");
-	    
+	    			new Principal();
 	    		}else {
 	    		double montant = 0.00;
 	    		for (int i = 0; i < listeClient.size(); i++) {

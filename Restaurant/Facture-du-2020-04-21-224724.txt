@@ -1,0 +1,7 @@
+
+Bienvenue au restaurant Simon & co.
+Factures : 
+
+Erreur : 
+
+*	Il y a un ou plusieurs espacements dans le fichier texte qui ne sont pas conforme au norme soit d'un espace entre chaque mot.
