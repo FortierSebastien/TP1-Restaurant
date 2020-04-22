@@ -198,103 +198,103 @@ public class LireFichierTxt {
 	public static void ecrireFichier(){
 		
 		
-		
-		 try {
-	            FileWriter writer = new FileWriter(FILE_NAME+ DATE_HEURE.format(new Date())+".txt", true);
-	           
-	            
-	            writer.write("\nBienvenue au restaurant Simon & co.\n");
-	            
-	            writer.write("Factures : ");
-	    		if(espacement){
-	    			System.out.println("\nIl y a un problème d'espacement à corriger dans le ficher texte utilisé");
-	    			new Principal();
-	    		}else {
-	    		double montant = 0.00;
-	    		for (int i = 0; i < listeClient.size(); i++) {
-	    			montant = 0;
-	    			String[][] commandeClientliste = listeClient.get(i).getCommande();
-	    			for (int j = 0; j < commandeClientliste.length; j++) {
-	    				if (commandeClientliste[j][0] != null) {
-	    					for (int j2 = 0; j2 < listePlats.size(); j2++) {
-	    						if (commandeClientliste[j][0].equals(listePlats.get(j2).getTitrePlat())) {
+		try {
+			FileWriter writer = new FileWriter(FILE_NAME + DATE_HEURE.format(new Date()) + ".txt", true);
 
-	    							montant += Double.parseDouble(listePlats.get(j2).getPrixPlat())
-	    									* Integer.parseInt(commandeClientliste[j][1]);
-	    							break;
-	    						} else {
-	    							if(j2 == listePlats.size() - 1 ) {
-	    								 writer.write("\n\nLe plat: "+ commandeClientliste[j][0] +" n'existe pas dans le menu");
-	    								plats = true;
-	    							}
-	    						}
-	    					}
-	    				} else {
-	    					if(montant != 0) {
-	    						
-	    						 writer.write("\n\nClient : " + listeClient.get(i).getNom() + "\n\tSous-total: "
-	    							   + outilsjava.OutilsAffichage.formaterMonetaire(montant, 2) + "\n\tTaxes: "
-	    										   + outilsjava.OutilsAffichage.formaterMonetaire((montant * (TPS + TVQ)), 2) + "\n\tTotal: " 
-	    										   + outilsjava.OutilsAffichage.formaterMonetaire(montant *= (TPS + TVQ + 1), 2));
-	    					}
-	    					break;
-	    					
-	    				}
-	    			}
-	    		}
-	    			
-	    			
-	    		}
-	    		ecrirePartieErreur(writer);
-	            
-	          
-	            writer.close();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-		
+			writer.write("\nBienvenue au restaurant Simon & co.\n");
+
+			writer.write("Factures : ");
+			if (espacement) {
+				System.out.println("\nIl y a un problème d'espacement à corriger dans le ficher texte utilisé");
+				new Principal();
+			} else {
+				double montant = 0.00;
+				for (int i = 0; i < listeClient.size(); i++) {
+					montant = 0;
+					String[][] commandeClientliste = listeClient.get(i).getCommande();
+					for (int j = 0; j < commandeClientliste.length; j++) {
+						if (commandeClientliste[j][0] != null) {
+							for (int j2 = 0; j2 < listePlats.size(); j2++) {
+								if (commandeClientliste[j][0].equals(listePlats.get(j2).getTitrePlat())) {
+
+									montant += Double.parseDouble(listePlats.get(j2).getPrixPlat())
+											* Integer.parseInt(commandeClientliste[j][1]);
+									break;
+								} else {
+									if (j2 == listePlats.size() - 1) {
+										writer.write("\n\nLe plat: " + commandeClientliste[j][0]
+												+ " n'existe pas dans le menu");
+										plats = true;
+									}
+								}
+							}
+						} else {
+							if (montant != 0) {
+
+								writer.write("\n\nClient : " + listeClient.get(i).getNom() + "\n\tSous-total: "
+										+ outilsjava.OutilsAffichage.formaterMonetaire(montant, 2) + "\n\tTaxes: "
+										+ outilsjava.OutilsAffichage.formaterMonetaire((montant * (TPS + TVQ)), 2)
+										+ "\n\tTotal: "
+										+ outilsjava.OutilsAffichage.formaterMonetaire(montant *= (TPS + TVQ + 1), 2));
+							}
+							break;
+
+						}
+					}
+				}
+
+			}
+			ecrirePartieErreur(writer);
+
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
-	
+
 	public static void ecrireErreurPlats(FileWriter writer) throws IOException {
-		if(plats) {
-			 writer.write("\n*	Il y a un ou plusieurs plats qui n'existe pas.\n");
+		if (plats) {
+			writer.write("\n*	Il y a un ou plusieurs plats qui n'existe pas.\n");
 		}
 	}
-	
+
 	public static void ecrireErreurClient(FileWriter writer) throws IOException {
-		if(client) {
+		if (client) {
 			writer.write("\n*	Il y a un ou plusieurs clients qui n'existe pas.\n");
 		}
 	}
-	
+
 	public static void ecrireErreurEspacement(FileWriter writer) throws IOException {
-		if(espacement) {
-			writer.write("\n*	Il y a un ou plusieurs espacements dans le fichier texte qui ne sont pas conforme au norme soit d'un espace entre chaque mot.\n");
+		if (espacement) {
+			writer.write(
+					"\n*	Il y a un ou plusieurs espacements dans le fichier texte qui ne sont pas conforme au norme soit d'un espace entre chaque mot.\n");
 		}
-	
+
 	}
+
 	public static void ecrirePartieErreur(FileWriter writer) throws IOException {
-		
-		if(!erreur()) {
+
+		if (!erreur()) {
 			writer.write("\n\nIl n'y a pas d'erreur dans le fichier \n");
-		}else {
-		writer.write("\n\nErreur : \n");
-		
-		ecrireErreurPlats(writer);
-		ecrireErreurClient(writer);
-		ecrireErreurEspacement(writer);
+		} else {
+			writer.write("\n\nErreur : \n");
+
+			ecrireErreurPlats(writer);
+			ecrireErreurClient(writer);
+			ecrireErreurEspacement(writer);
 		}
 	}
+
 	public static boolean erreur() {
-		boolean erreur=false;
-		
-		if(plats||client||espacement) {
-			erreur=true;
+		boolean erreur = false;
+
+		if (plats || client || espacement) {
+			erreur = true;
 		}
-		
+
 		return erreur;
-		
+
 	}
-	
-		
+
 }
