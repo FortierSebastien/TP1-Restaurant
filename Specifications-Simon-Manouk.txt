@@ -36,8 +36,16 @@ Test à faire:
 	Tester une grosse commande
 		Je vais tester le fait qu'un client achète plus d'un article dans sa commande.
 	
+	Tester la création d'une commande avec un Client non existant
+		Je vais empêcher la création de la commande pour le client non existant.
+	
+	Tester la création d'une liste de client vide
+	
+	Tester la création d'une liste de plat vide
 
+	Calculer la facture avec un plat à 0$
 
+	Calculer la facture avec aucun plats
 
 
 

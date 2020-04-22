@@ -57,7 +57,7 @@ public class Cv {
 		affiche( anthony );
 		
 	}
-	public static Cv setInfo(String nom, String prenom, String formation,int experienceInt,String []competence,String attente ) {
+	public Cv setInfo(String nom, String prenom, String formation,int experienceInt,String []competence,String attente ) {
 		
 		Cv temp = new Cv();
 		temp.setNom( nom );

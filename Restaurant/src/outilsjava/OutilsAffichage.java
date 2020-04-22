@@ -94,24 +94,4 @@ public class OutilsAffichage {
 		return formatNb.format( nb );
 	}
 
-	/**
-	 * La méthode publique formaterPourcentage() permet de formater un nombre dans le format 9 999,99 %.
-	 * 
-	 * @param nb
-	 *            Le nombre à formater.
-	 * @param dec
-	 *            Le nombre de décimales à mettre après la virgule.
-	 *            
-	 * @return La chaîne de caractères contenant le nombre formaté.
-	 */
-
-	public static String formaterPourcentage( double nb, int dec ) {
-		NumberFormat formatNb = NumberFormat.getPercentInstance( Locale.CANADA_FRENCH );
-
-		formatNb.setMinimumIntegerDigits( 1 );
-		formatNb.setMinimumFractionDigits( dec );
-		formatNb.setMaximumFractionDigits( dec );
-
-		return formatNb.format( nb );
-	}
 }
